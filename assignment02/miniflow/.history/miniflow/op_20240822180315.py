@@ -87,7 +87,7 @@ class MulOp(Op):
         # and return [grad_a,grad_b]
 
         # TODO: Write your code below
-        return [mul_op(output_grad, node.inputs[1]), mul_op(output_grad, node.inputs[0])]
+        pass 
 
 
 class MulConstOp(Op):
@@ -107,7 +107,7 @@ class MulConstOp(Op):
         # and return [grad_a]
 
         # TODO: Write your code below
-        return [mul_const_op(output_grad, node.const_attr)]
+        pass
         
 
 
@@ -157,11 +157,7 @@ class MatMulOp(Op):
         # according to the attr to decide the value of a and b
         # and return the result
         # TODO: Write your code below
-        if node.trans_A:
-            val_a = val_a.T
-        if node.trans_B:
-            val_b = val_b.T
-        return np.matmul(val_a, val_b)
+        pass 
 
         
 
@@ -171,18 +167,7 @@ class MatMulOp(Op):
         #  and reuturn [grad_a, grad_b]
 
         # TODO: Write your code below
-        A, B = node.inputs
-        if node.trans_A:
-            grad_A = matmul_op(B, output_grad, trans_A=False, trans_B=True)
-        else:
-            grad_A = matmul_op(output_grad, B, trans_A=False, trans_B=True)
-        
-        if node.trans_B:
-            grad_B = matmul_op(output_grad, A, trans_A=True, trans_B=False)
-        else:
-            grad_B = matmul_op(A, output_grad, trans_A=True, trans_B=False)
-        
-        return [grad_A, grad_B]
+        pass 
 
 
 # NOTION: Here, Instantiate the your operators

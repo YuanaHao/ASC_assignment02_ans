@@ -15,10 +15,7 @@ class Executor:
         # Now you have the value of the input nodes(feed_dict) and computation graph(self.graph)
         # TODO:Traverse graph in topological order and compute values for all nodes,write you code below
         # hint: use node.op.compute(node, input_vals) to get value of node
-        for node in self.graph:
-            if node not in feed_dict:
-                input_vals = [node_to_val_map[input_node] for input_node in node.inputs]
-                node_to_val_map[node] = node.op.compute(node, input_vals)
+
 
         # return the val of each node 
         return [node_to_val_map[node] for node in self.eval_node_list]
@@ -33,18 +30,16 @@ def gradient(output_node:Node, node_list:List[Node])->List[Node]:
     
     # Traverse the graph in reverse topological order and calculate the gradient for each variable
     for node in reverse_topo_order:
+        pass 
         #TODO: Sum the adjoints from all output nodes(hint: use sum_node_list)
-        output_grad = sum_node_list(node_to_output_grads_list[node])
-        node_to_output_grad[node] = output_grad
 
+        
         #TODO: Calculate the gradient of the node with respect to its inputs
+        
+
+        
         #TODO: Traverse the inputs of node and add the partial adjoints to the list
-        if node.op:
-                input_grads = node.op.gradient(node, output_grad)
-                for i, input_node in enumerate(node.inputs):
-                    if input_node not in node_to_output_grads_list:
-                        node_to_output_grads_list[input_node] = []
-                    node_to_output_grads_list[input_node].append(input_grads[i])
+
 
     # return the gradient of each node in node_list
     return  [node_to_output_grad[node] for node in node_list]

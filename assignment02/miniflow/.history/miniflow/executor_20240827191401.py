@@ -33,18 +33,14 @@ def gradient(output_node:Node, node_list:List[Node])->List[Node]:
     
     # Traverse the graph in reverse topological order and calculate the gradient for each variable
     for node in reverse_topo_order:
+        pass 
         #TODO: Sum the adjoints from all output nodes(hint: use sum_node_list)
-        output_grad = sum_node_list(node_to_output_grads_list[node])
-        node_to_output_grad[node] = output_grad
-
+        
         #TODO: Calculate the gradient of the node with respect to its inputs
+
+        
         #TODO: Traverse the inputs of node and add the partial adjoints to the list
-        if node.op:
-                input_grads = node.op.gradient(node, output_grad)
-                for i, input_node in enumerate(node.inputs):
-                    if input_node not in node_to_output_grads_list:
-                        node_to_output_grads_list[input_node] = []
-                    node_to_output_grads_list[input_node].append(input_grads[i])
+
 
     # return the gradient of each node in node_list
     return  [node_to_output_grad[node] for node in node_list]

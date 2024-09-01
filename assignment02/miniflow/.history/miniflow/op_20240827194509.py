@@ -87,7 +87,7 @@ class MulOp(Op):
         # and return [grad_a,grad_b]
 
         # TODO: Write your code below
-        return [mul_op(output_grad, node.inputs[1]), mul_op(output_grad, node.inputs[0])]
+        pass 
 
 
 class MulConstOp(Op):
@@ -107,7 +107,7 @@ class MulConstOp(Op):
         # and return [grad_a]
 
         # TODO: Write your code below
-        return [mul_const_op(output_grad, node.const_attr)]
+        pass
         
 
 
